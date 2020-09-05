@@ -1,17 +1,23 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
+import React from "react";
+import ReactDOM from "react-dom";
 
-import Conversion from './components/conversion.js';
+import store from "./stores/configureStore";
+import Conversion from "./components/conversion.js";
 
 class MainComponent extends React.Component {
-    render() {
-        return (
-            <div>
-                <Conversion />
-            </div>
-        )
-    }
+  componentDidMount() {
+    store.subscribe(() => {
+      this.setState({});
+    });
+  }
+
+  render() {
+    return (
+      <div>
+        <Conversion originAmount={store.getState().originAmount} />
+      </div>
+    );
+  }
 }
 
-
-ReactDOM.render(<MainComponent />, document.getElementById('container'));
+ReactDOM.render(<MainComponent />, document.getElementById("container"));

@@ -1,29 +1,8 @@
 import React from "react";
-import { createStore, bindActionCreators } from "redux";
+import store from "../stores/configureStore";
 import PropTypes from "prop-types";
 import axios from "axios";
 import debounce from "lodash.debounce";
-
-let defaultState = {
-  originAmount: "0.00",
-};
-
-function amountReducer(state = defaultState, action) {
-  if (action.type === "CHANGE_ORIGIN_AMOUNT") {
-    return { ...state, originAmount: action.data };
-  }
-  return state;
-}
-
-let store = createStore(amountReducer);
-
-store.subscribe(() => {
-  console.log("state", store.getState());
-});
-
-store.dispatch({ type: "CHANGE_ORIGIN_AMOUNT", data: "12.34" });
-store.dispatch({ type: "CHANGE_ORIGIN_AMOUNT", data: "56.78" });
-store.dispatch({ type: "CHANGE_ORIGIN_AMOUNT", data: "91.01" });
 
 class FeesTable extends React.Component {
   render() {
@@ -76,7 +55,7 @@ class Conversion extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      originAmount: "0.00",
+      // originAmount: "0.00",
       originCurrency: "USD",
       destinationAmount: "0.00",
       destinationCurrency: "EUR",
@@ -177,7 +156,8 @@ class Conversion extends React.Component {
     newAmount = newAmount.replace(",", "");
 
     // optimistic field updates
-    this.setState({ originAmount: newAmount });
+    store.dispatch({ type: "CHANGE_ORIGIN_AMOUNT", data: { newAmount } });
+    // this.setState({ originAmount: newAmount });
 
     // get the new dest amount
     this.makeConversionAjaxCall(
@@ -259,7 +239,7 @@ class Conversion extends React.Component {
     var destCurrency = this.state.destinationCurrency;
 
     var payload = {
-      originAmount: data.newValue || this.state.originAmount,
+      originAmount: data.newValue || this.props.originAmount,
       destAmount: data.newValue || this.state.destAmount,
       originCurrency: originCurrency,
       destCurrency: destCurrency,
@@ -295,7 +275,7 @@ class Conversion extends React.Component {
   }
   calcNewTotal() {
     var newTotal =
-      parseFloat(this.state.originAmount, 10) +
+      parseFloat(this.props.originAmount, 10) +
       parseFloat(this.state.feeAmount, 10);
     this.setState({ totalCost: parseFloat(newTotal) });
   }
@@ -313,7 +293,7 @@ class Conversion extends React.Component {
           className="amount-field"
           ref={(input) => (this.originAmountInput = input)}
           onChange={this.handleOriginAmountChange}
-          value={this.state.originAmount}
+          value={this.props.originAmount}
         />
         <select
           value={this.state.originCurrency}

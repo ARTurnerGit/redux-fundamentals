@@ -1552,6 +1552,10 @@ var _reactDom = __webpack_require__(45);
 
 var _reactDom2 = _interopRequireDefault(_reactDom);
 
+var _configureStore = __webpack_require__(62);
+
+var _configureStore2 = _interopRequireDefault(_configureStore);
+
 var _conversion = __webpack_require__(37);
 
 var _conversion2 = _interopRequireDefault(_conversion);
@@ -1565,29 +1569,38 @@ function _possibleConstructorReturn(self, call) { if (!self) { throw new Referen
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
 var MainComponent = function (_React$Component) {
-    _inherits(MainComponent, _React$Component);
+  _inherits(MainComponent, _React$Component);
 
-    function MainComponent() {
-        _classCallCheck(this, MainComponent);
+  function MainComponent() {
+    _classCallCheck(this, MainComponent);
 
-        return _possibleConstructorReturn(this, (MainComponent.__proto__ || Object.getPrototypeOf(MainComponent)).apply(this, arguments));
+    return _possibleConstructorReturn(this, (MainComponent.__proto__ || Object.getPrototypeOf(MainComponent)).apply(this, arguments));
+  }
+
+  _createClass(MainComponent, [{
+    key: "componentDidMount",
+    value: function componentDidMount() {
+      var _this2 = this;
+
+      _configureStore2.default.subscribe(function () {
+        _this2.setState({});
+      });
     }
+  }, {
+    key: "render",
+    value: function render() {
+      return _react2.default.createElement(
+        "div",
+        null,
+        _react2.default.createElement(_conversion2.default, { originAmount: _configureStore2.default.getState().originAmount })
+      );
+    }
+  }]);
 
-    _createClass(MainComponent, [{
-        key: 'render',
-        value: function render() {
-            return _react2.default.createElement(
-                'div',
-                null,
-                _react2.default.createElement(_conversion2.default, null)
-            );
-        }
-    }]);
-
-    return MainComponent;
+  return MainComponent;
 }(_react2.default.Component);
 
-_reactDom2.default.render(_react2.default.createElement(MainComponent, null), document.getElementById('container'));
+_reactDom2.default.render(_react2.default.createElement(MainComponent, null), document.getElementById("container"));
 
 /***/ }),
 /* 20 */
@@ -2403,13 +2416,13 @@ Object.defineProperty(exports, "__esModule", {
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
-
 var _react = __webpack_require__(5);
 
 var _react2 = _interopRequireDefault(_react);
 
-var _redux = __webpack_require__(52);
+var _configureStore = __webpack_require__(62);
+
+var _configureStore2 = _interopRequireDefault(_configureStore);
 
 var _propTypes = __webpack_require__(42);
 
@@ -2430,30 +2443,6 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-
-var defaultState = {
-  originAmount: "0.00"
-};
-
-function amountReducer() {
-  var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : defaultState;
-  var action = arguments[1];
-
-  if (action.type === "CHANGE_ORIGIN_AMOUNT") {
-    return _extends({}, state, { originAmount: action.data });
-  }
-  return state;
-}
-
-var store = (0, _redux.createStore)(amountReducer);
-
-store.subscribe(function () {
-  console.log("state", store.getState());
-});
-
-store.dispatch({ type: "CHANGE_ORIGIN_AMOUNT", data: "12.34" });
-store.dispatch({ type: "CHANGE_ORIGIN_AMOUNT", data: "56.78" });
-store.dispatch({ type: "CHANGE_ORIGIN_AMOUNT", data: "91.01" });
 
 var FeesTable = function (_React$Component) {
   _inherits(FeesTable, _React$Component);
@@ -2560,7 +2549,7 @@ var Conversion = function (_React$Component2) {
     var _this2 = _possibleConstructorReturn(this, (Conversion.__proto__ || Object.getPrototypeOf(Conversion)).call(this, props));
 
     _this2.state = {
-      originAmount: "0.00",
+      // originAmount: "0.00",
       originCurrency: "USD",
       destinationAmount: "0.00",
       destinationCurrency: "EUR",
@@ -2668,7 +2657,8 @@ var Conversion = function (_React$Component2) {
       newAmount = newAmount.replace(",", "");
 
       // optimistic field updates
-      this.setState({ originAmount: newAmount });
+      _configureStore2.default.dispatch({ type: "CHANGE_ORIGIN_AMOUNT", data: { newAmount: newAmount } });
+      // this.setState({ originAmount: newAmount });
 
       // get the new dest amount
       this.makeConversionAjaxCall({
@@ -2743,7 +2733,7 @@ var Conversion = function (_React$Component2) {
       var destCurrency = this.state.destinationCurrency;
 
       var payload = {
-        originAmount: data.newValue || this.state.originAmount,
+        originAmount: data.newValue || this.props.originAmount,
         destAmount: data.newValue || this.state.destAmount,
         originCurrency: originCurrency,
         destCurrency: destCurrency,
@@ -2777,7 +2767,7 @@ var Conversion = function (_React$Component2) {
   }, {
     key: "calcNewTotal",
     value: function calcNewTotal() {
-      var newTotal = parseFloat(this.state.originAmount, 10) + parseFloat(this.state.feeAmount, 10);
+      var newTotal = parseFloat(this.props.originAmount, 10) + parseFloat(this.state.feeAmount, 10);
       this.setState({ totalCost: parseFloat(newTotal) });
     }
   }, {
@@ -2809,7 +2799,7 @@ var Conversion = function (_React$Component2) {
             return _this6.originAmountInput = input;
           },
           onChange: this.handleOriginAmountChange,
-          value: this.state.originAmount
+          value: this.props.originAmount
         }),
         _react2.default.createElement(
           "select",
@@ -33329,6 +33319,40 @@ module.exports = function(originalModule) {
 
 module.exports = __webpack_require__(19);
 
+
+/***/ }),
+/* 62 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+
+var _redux = __webpack_require__(52);
+
+var defaultState = {
+  originAmount: "0.00"
+};
+
+function amountReducer() {
+  var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : defaultState;
+  var action = arguments[1];
+
+  if (action.type === "CHANGE_ORIGIN_AMOUNT") {
+    console.log({ state: state });
+    return _extends({}, state, { originAmount: action.data.newAmount });
+  }
+  return state;
+}
+
+var store = (0, _redux.createStore)(amountReducer);
+
+exports.default = store;
 
 /***/ })
 /******/ ]);
