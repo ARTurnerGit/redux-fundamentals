@@ -63,7 +63,7 @@
 /******/ 	__webpack_require__.p = "";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 57);
+/******/ 	return __webpack_require__(__webpack_require__.s = 61);
 /******/ })
 /************************************************************************/
 /******/ ([
@@ -821,9 +821,9 @@ module.exports = shouldUseNative() ? Object.assign : function (target, source) {
 /* WEBPACK VAR INJECTION */(function(process) {
 
 if (process.env.NODE_ENV === 'production') {
-  module.exports = __webpack_require__(48);
+  module.exports = __webpack_require__(49);
 } else {
-  module.exports = __webpack_require__(47);
+  module.exports = __webpack_require__(48);
 }
 
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(0)))
@@ -905,12 +905,12 @@ module.exports = warning;
 
 
 var utils = __webpack_require__(1);
-var settle = __webpack_require__(27);
-var cookies = __webpack_require__(30);
+var settle = __webpack_require__(28);
+var cookies = __webpack_require__(31);
 var buildURL = __webpack_require__(14);
-var buildFullPath = __webpack_require__(24);
-var parseHeaders = __webpack_require__(34);
-var isURLSameOrigin = __webpack_require__(32);
+var buildFullPath = __webpack_require__(25);
+var parseHeaders = __webpack_require__(35);
+var isURLSameOrigin = __webpack_require__(33);
 var createError = __webpack_require__(10);
 
 module.exports = function xhrAdapter(config) {
@@ -1135,7 +1135,7 @@ module.exports = function isCancel(value) {
 "use strict";
 
 
-var enhanceError = __webpack_require__(26);
+var enhanceError = __webpack_require__(27);
 
 /**
  * Create an Error with the specified message, config, error code, request and response.
@@ -1255,7 +1255,7 @@ module.exports = function mergeConfig(config1, config2) {
 /* WEBPACK VAR INJECTION */(function(process) {
 
 var utils = __webpack_require__(1);
-var normalizeHeaderName = __webpack_require__(33);
+var normalizeHeaderName = __webpack_require__(34);
 
 var DEFAULT_CONTENT_TYPE = {
   'Content-Type': 'application/x-www-form-urlencoded'
@@ -1501,15 +1501,42 @@ module.exports = ReactPropTypesSecret;
 /* WEBPACK VAR INJECTION */(function(process) {
 
 if (process.env.NODE_ENV === 'production') {
-  module.exports = __webpack_require__(54);
+  module.exports = __webpack_require__(56);
 } else {
-  module.exports = __webpack_require__(53);
+  module.exports = __webpack_require__(55);
 }
 
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(0)))
 
 /***/ }),
 /* 18 */
+/***/ (function(module, exports) {
+
+var g;
+
+// This works in non-strict mode
+g = (function() {
+	return this;
+})();
+
+try {
+	// This works if eval is allowed (see CSP)
+	g = g || Function("return this")() || (1,eval)("this");
+} catch(e) {
+	// This works if the window reference is available
+	if(typeof window === "object")
+		g = window;
+}
+
+// g can still be undefined, but nothing to do about it...
+// We return undefined, instead of nothing here, so it's
+// easier to handle this case. if(!global) { ...}
+
+module.exports = g;
+
+
+/***/ }),
+/* 19 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1521,11 +1548,11 @@ var _react = __webpack_require__(5);
 
 var _react2 = _interopRequireDefault(_react);
 
-var _reactDom = __webpack_require__(44);
+var _reactDom = __webpack_require__(45);
 
 var _reactDom2 = _interopRequireDefault(_reactDom);
 
-var _conversion = __webpack_require__(36);
+var _conversion = __webpack_require__(37);
 
 var _conversion2 = _interopRequireDefault(_conversion);
 
@@ -1563,13 +1590,13 @@ var MainComponent = function (_React$Component) {
 _reactDom2.default.render(_react2.default.createElement(MainComponent, null), document.getElementById('container'));
 
 /***/ }),
-/* 19 */
+/* 20 */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(20);
+module.exports = __webpack_require__(21);
 
 /***/ }),
-/* 20 */
+/* 21 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1577,7 +1604,7 @@ module.exports = __webpack_require__(20);
 
 var utils = __webpack_require__(1);
 var bind = __webpack_require__(13);
-var Axios = __webpack_require__(22);
+var Axios = __webpack_require__(23);
 var mergeConfig = __webpack_require__(11);
 var defaults = __webpack_require__(12);
 
@@ -1613,14 +1640,14 @@ axios.create = function create(instanceConfig) {
 
 // Expose Cancel & CancelToken
 axios.Cancel = __webpack_require__(8);
-axios.CancelToken = __webpack_require__(21);
+axios.CancelToken = __webpack_require__(22);
 axios.isCancel = __webpack_require__(9);
 
 // Expose all/spread
 axios.all = function all(promises) {
   return Promise.all(promises);
 };
-axios.spread = __webpack_require__(35);
+axios.spread = __webpack_require__(36);
 
 module.exports = axios;
 
@@ -1629,7 +1656,7 @@ module.exports.default = axios;
 
 
 /***/ }),
-/* 21 */
+/* 22 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1693,7 +1720,7 @@ module.exports = CancelToken;
 
 
 /***/ }),
-/* 22 */
+/* 23 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1701,8 +1728,8 @@ module.exports = CancelToken;
 
 var utils = __webpack_require__(1);
 var buildURL = __webpack_require__(14);
-var InterceptorManager = __webpack_require__(23);
-var dispatchRequest = __webpack_require__(25);
+var InterceptorManager = __webpack_require__(24);
+var dispatchRequest = __webpack_require__(26);
 var mergeConfig = __webpack_require__(11);
 
 /**
@@ -1794,7 +1821,7 @@ module.exports = Axios;
 
 
 /***/ }),
-/* 23 */
+/* 24 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1853,14 +1880,14 @@ module.exports = InterceptorManager;
 
 
 /***/ }),
-/* 24 */
+/* 25 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-var isAbsoluteURL = __webpack_require__(31);
-var combineURLs = __webpack_require__(29);
+var isAbsoluteURL = __webpack_require__(32);
+var combineURLs = __webpack_require__(30);
 
 /**
  * Creates a new URL by combining the baseURL with the requestedURL,
@@ -1880,14 +1907,14 @@ module.exports = function buildFullPath(baseURL, requestedURL) {
 
 
 /***/ }),
-/* 25 */
+/* 26 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
 var utils = __webpack_require__(1);
-var transformData = __webpack_require__(28);
+var transformData = __webpack_require__(29);
 var isCancel = __webpack_require__(9);
 var defaults = __webpack_require__(12);
 
@@ -1966,7 +1993,7 @@ module.exports = function dispatchRequest(config) {
 
 
 /***/ }),
-/* 26 */
+/* 27 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -2015,7 +2042,7 @@ module.exports = function enhanceError(error, config, code, request, response) {
 
 
 /***/ }),
-/* 27 */
+/* 28 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -2047,7 +2074,7 @@ module.exports = function settle(resolve, reject, response) {
 
 
 /***/ }),
-/* 28 */
+/* 29 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -2074,7 +2101,7 @@ module.exports = function transformData(data, headers, fns) {
 
 
 /***/ }),
-/* 29 */
+/* 30 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -2095,7 +2122,7 @@ module.exports = function combineURLs(baseURL, relativeURL) {
 
 
 /***/ }),
-/* 30 */
+/* 31 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -2155,7 +2182,7 @@ module.exports = (
 
 
 /***/ }),
-/* 31 */
+/* 32 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -2176,7 +2203,7 @@ module.exports = function isAbsoluteURL(url) {
 
 
 /***/ }),
-/* 32 */
+/* 33 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -2251,7 +2278,7 @@ module.exports = (
 
 
 /***/ }),
-/* 33 */
+/* 34 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -2270,7 +2297,7 @@ module.exports = function normalizeHeaderName(headers, normalizedName) {
 
 
 /***/ }),
-/* 34 */
+/* 35 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -2330,7 +2357,7 @@ module.exports = function parseHeaders(headers) {
 
 
 /***/ }),
-/* 35 */
+/* 36 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -2364,31 +2391,35 @@ module.exports = function spread(callback) {
 
 
 /***/ }),
-/* 36 */
+/* 37 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
 Object.defineProperty(exports, "__esModule", {
-    value: true
+  value: true
 });
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
 var _react = __webpack_require__(5);
 
 var _react2 = _interopRequireDefault(_react);
 
-var _propTypes = __webpack_require__(41);
+var _redux = __webpack_require__(52);
+
+var _propTypes = __webpack_require__(42);
 
 var _propTypes2 = _interopRequireDefault(_propTypes);
 
-var _axios = __webpack_require__(19);
+var _axios = __webpack_require__(20);
 
 var _axios2 = _interopRequireDefault(_axios);
 
-var _lodash = __webpack_require__(37);
+var _lodash = __webpack_require__(38);
 
 var _lodash2 = _interopRequireDefault(_lodash);
 
@@ -2400,422 +2431,459 @@ function _possibleConstructorReturn(self, call) { if (!self) { throw new Referen
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
+var defaultState = {
+  originAmount: "0.00"
+};
+
+function amountReducer() {
+  var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : defaultState;
+  var action = arguments[1];
+
+  if (action.type === "CHANGE_ORIGIN_AMOUNT") {
+    return _extends({}, state, { originAmount: action.data });
+  }
+  return state;
+}
+
+var store = (0, _redux.createStore)(amountReducer);
+
+store.subscribe(function () {
+  console.log("state", store.getState());
+});
+
+store.dispatch({ type: "CHANGE_ORIGIN_AMOUNT", data: "12.34" });
+store.dispatch({ type: "CHANGE_ORIGIN_AMOUNT", data: "56.78" });
+store.dispatch({ type: "CHANGE_ORIGIN_AMOUNT", data: "91.01" });
+
 var FeesTable = function (_React$Component) {
-    _inherits(FeesTable, _React$Component);
+  _inherits(FeesTable, _React$Component);
 
-    function FeesTable() {
-        _classCallCheck(this, FeesTable);
+  function FeesTable() {
+    _classCallCheck(this, FeesTable);
 
-        return _possibleConstructorReturn(this, (FeesTable.__proto__ || Object.getPrototypeOf(FeesTable)).apply(this, arguments));
-    }
+    return _possibleConstructorReturn(this, (FeesTable.__proto__ || Object.getPrototypeOf(FeesTable)).apply(this, arguments));
+  }
 
-    _createClass(FeesTable, [{
-        key: 'render',
-        value: function render() {
-            var _props = this.props,
-                conversionRate = _props.conversionRate,
-                fee = _props.fee,
-                total = _props.total,
-                originCurrency = _props.originCurrency,
-                destinationCurrency = _props.destinationCurrency;
+  _createClass(FeesTable, [{
+    key: "render",
+    value: function render() {
+      var _props = this.props,
+          conversionRate = _props.conversionRate,
+          fee = _props.fee,
+          total = _props.total,
+          originCurrency = _props.originCurrency,
+          destinationCurrency = _props.destinationCurrency;
 
 
-            return _react2.default.createElement(
-                'div',
+      return _react2.default.createElement(
+        "div",
+        null,
+        _react2.default.createElement(
+          "table",
+          null,
+          _react2.default.createElement(
+            "tbody",
+            null,
+            _react2.default.createElement(
+              "tr",
+              null,
+              _react2.default.createElement(
+                "td",
                 null,
-                _react2.default.createElement(
-                    'table',
-                    null,
-                    _react2.default.createElement(
-                        'tbody',
-                        null,
-                        _react2.default.createElement(
-                            'tr',
-                            null,
-                            _react2.default.createElement(
-                                'td',
-                                null,
-                                'Conversion Rate'
-                            ),
-                            _react2.default.createElement(
-                                'td',
-                                null,
-                                '1 ',
-                                originCurrency,
-                                ' -> ',
-                                conversionRate.toFixed(2),
-                                ' ',
-                                destinationCurrency
-                            )
-                        ),
-                        _react2.default.createElement(
-                            'tr',
-                            null,
-                            _react2.default.createElement(
-                                'td',
-                                null,
-                                'Fee'
-                            ),
-                            _react2.default.createElement(
-                                'td',
-                                null,
-                                fee.toFixed(2),
-                                ' ',
-                                originCurrency
-                            )
-                        ),
-                        _react2.default.createElement(
-                            'tr',
-                            null,
-                            _react2.default.createElement(
-                                'td',
-                                { className: 'total-label' },
-                                'Total Cost'
-                            ),
-                            _react2.default.createElement(
-                                'td',
-                                null,
-                                total.toFixed(2),
-                                ' ',
-                                originCurrency
-                            )
-                        )
-                    )
-                )
-            );
-        }
-    }]);
+                "Conversion Rate"
+              ),
+              _react2.default.createElement(
+                "td",
+                null,
+                "1 ",
+                originCurrency,
+                " -> ",
+                conversionRate.toFixed(2),
+                " ",
+                destinationCurrency
+              )
+            ),
+            _react2.default.createElement(
+              "tr",
+              null,
+              _react2.default.createElement(
+                "td",
+                null,
+                "Fee"
+              ),
+              _react2.default.createElement(
+                "td",
+                null,
+                fee.toFixed(2),
+                " ",
+                originCurrency
+              )
+            ),
+            _react2.default.createElement(
+              "tr",
+              null,
+              _react2.default.createElement(
+                "td",
+                { className: "total-label" },
+                "Total Cost"
+              ),
+              _react2.default.createElement(
+                "td",
+                null,
+                total.toFixed(2),
+                " ",
+                originCurrency
+              )
+            )
+          )
+        )
+      );
+    }
+  }]);
 
-    return FeesTable;
+  return FeesTable;
 }(_react2.default.Component);
 
 FeesTable.propTypes = {
-    conversionRate: _propTypes2.default.number.isRequired,
-    originCurrency: _propTypes2.default.string.isRequired,
-    total: _propTypes2.default.number.isRequired,
-    destinationCurrency: _propTypes2.default.string.isRequired
+  conversionRate: _propTypes2.default.number.isRequired,
+  originCurrency: _propTypes2.default.string.isRequired,
+  total: _propTypes2.default.number.isRequired,
+  destinationCurrency: _propTypes2.default.string.isRequired
 };
 
 var Conversion = function (_React$Component2) {
-    _inherits(Conversion, _React$Component2);
+  _inherits(Conversion, _React$Component2);
 
-    function Conversion(props) {
-        _classCallCheck(this, Conversion);
+  function Conversion(props) {
+    _classCallCheck(this, Conversion);
 
-        var _this2 = _possibleConstructorReturn(this, (Conversion.__proto__ || Object.getPrototypeOf(Conversion)).call(this, props));
+    var _this2 = _possibleConstructorReturn(this, (Conversion.__proto__ || Object.getPrototypeOf(Conversion)).call(this, props));
 
-        _this2.state = {
-            originAmount: '0.00',
-            originCurrency: 'USD',
-            destinationAmount: '0.00',
-            destinationCurrency: 'EUR',
-            feeAmount: 0.00,
-            conversionRate: 1.5,
-            totalCost: 0.00,
-            errorMsg: ''
+    _this2.state = {
+      originAmount: "0.00",
+      originCurrency: "USD",
+      destinationAmount: "0.00",
+      destinationCurrency: "EUR",
+      feeAmount: 0.0,
+      conversionRate: 1.5,
+      totalCost: 0.0,
+      errorMsg: ""
+    };
 
-            // bind event listeners so 'this' will be available in the handlers
-        };_this2.handleOriginAmountChange = _this2.handleOriginAmountChange.bind(_this2);
-        _this2.handleDestAmountChange = _this2.handleDestAmountChange.bind(_this2);
-        _this2.handleOriginCurrencyChange = _this2.handleCurrencyChange.bind(_this2, 'origin');
-        _this2.handleDestCurrencyChange = _this2.handleCurrencyChange.bind(_this2, 'destination');
-        _this2.handleAjaxFailure = _this2.handleAjaxFailure.bind(_this2);
-        return _this2;
+    // bind event listeners so 'this' will be available in the handlers
+    _this2.handleOriginAmountChange = _this2.handleOriginAmountChange.bind(_this2);
+    _this2.handleDestAmountChange = _this2.handleDestAmountChange.bind(_this2);
+    _this2.handleOriginCurrencyChange = _this2.handleCurrencyChange.bind(_this2, "origin");
+    _this2.handleDestCurrencyChange = _this2.handleCurrencyChange.bind(_this2, "destination");
+    _this2.handleAjaxFailure = _this2.handleAjaxFailure.bind(_this2);
+    return _this2;
+  }
+
+  _createClass(Conversion, [{
+    key: "componentDidMount",
+    value: function componentDidMount() {
+      // Add a debounced version of _getDestinationAmount() so we avoid server & UI Thrashing.
+      // See http://stackoverflow.com/questions/23123138/perform-debounce-in-react-js/28046731#28046731
+      this.makeConversionAjaxCall = (0, _lodash2.default)(this._makeConversionAjaxCall, 350);
+      this.makeFeeAjaxCall = (0, _lodash2.default)(this._makeFeeAjaxCall, 350);
+
+      this.originAmountInput.focus();
     }
+    // we'll handle all failures the same
 
-    _createClass(Conversion, [{
-        key: 'componentDidMount',
-        value: function componentDidMount() {
-            // Add a debounced version of _getDestinationAmount() so we avoid server & UI Thrashing.
-            // See http://stackoverflow.com/questions/23123138/perform-debounce-in-react-js/28046731#28046731
-            this.makeConversionAjaxCall = (0, _lodash2.default)(this._makeConversionAjaxCall, 350);
-            this.makeFeeAjaxCall = (0, _lodash2.default)(this._makeFeeAjaxCall, 350);
+  }, {
+    key: "handleAjaxFailure",
+    value: function handleAjaxFailure(resp) {
+      var msg = "Error. Please try again later.";
 
-            this.originAmountInput.focus();
-        }
-        // we'll handle all failures the same
+      if (resp && resp.request && resp.request.status === 0) {
+        msg = "Oh no! App appears to be offline.";
+      }
 
-    }, {
-        key: 'handleAjaxFailure',
-        value: function handleAjaxFailure(resp) {
-            var msg = 'Error. Please try again later.';
+      this.setState({
+        errorMsg: msg
+      });
+    }
+    // on success ensure no error message
 
-            if (resp && resp.request && resp.request.status === 0) {
-                msg = 'Oh no! App appears to be offline.';
-            }
+  }, {
+    key: "clearErrorMessage",
+    value: function clearErrorMessage() {
+      if (this.state.errorMsg) {
+        this.setState({
+          errorMsg: ""
+        });
+      }
+    }
+  }, {
+    key: "handleCurrencyChange",
+    value: function handleCurrencyChange(currentlyEditing, event) {
+      var _this3 = this;
 
-            this.setState({
-                errorMsg: msg
+      var obj = {};
+      if (currentlyEditing === "origin") {
+        obj.originCurrency = event.target.value;
+      } else {
+        obj.destinationCurrency = event.target.value;
+      }
+
+      // just change both...
+      // we have to use the callback so `this.state` will reflect the proper values
+      // when they are called in _makeConversionAjaxCall()
+      this.setState(obj, function () {
+        // get new dest amount & conversion rates
+        _this3.makeConversionAjaxCall({}, function (resp) {
+          _this3.clearErrorMessage();
+
+          _this3.setState({
+            originAmount: resp.originAmount,
+            // destinationAmount: resp.destAmount,
+            destinationAmount: _this3.state.destinationAmount,
+            conversionRate: resp.xRate
+          });
+
+          // get the new fee & total amount
+          _this3.makeFeeAjaxCall({
+            originAmount: resp.originAmount,
+            originCurrency: _this3.state.originCurrency,
+            destCurrency: _this3.state.destinationCurrency
+          }, function (response) {
+            _this3.setState({
+              feeAmount: response.feeAmount
             });
-        }
-        // on success ensure no error message
 
-    }, {
-        key: 'clearErrorMessage',
-        value: function clearErrorMessage() {
-            if (this.state.errorMsg) {
-                this.setState({
-                    errorMsg: ''
-                });
-            }
-        }
-    }, {
-        key: 'handleCurrencyChange',
-        value: function handleCurrencyChange(currentlyEditing, event) {
-            var _this3 = this;
+            _this3.calcNewTotal();
+          }, _this3.handleAjaxFailure);
+        });
+      });
+    }
+  }, {
+    key: "handleOriginAmountChange",
+    value: function handleOriginAmountChange(event) {
+      var _this4 = this;
 
-            var obj = {};
-            if (currentlyEditing === 'origin') {
-                obj.originCurrency = event.target.value;
-            } else {
-                obj.destinationCurrency = event.target.value;
-            }
+      var newAmount = event.target.value;
 
-            // just change both...
-            // we have to use the callback so `this.state` will reflect the proper values
-            // when they are called in _makeConversionAjaxCall()
-            this.setState(obj, function () {
-                // get new dest amount & conversion rates
-                _this3.makeConversionAjaxCall({}, function (resp) {
-                    _this3.clearErrorMessage();
+      // remove unallowed chars
+      newAmount = newAmount.replace(",", "");
 
-                    _this3.setState({
-                        originAmount: resp.originAmount,
-                        // destinationAmount: resp.destAmount,
-                        destinationAmount: _this3.state.destinationAmount,
-                        conversionRate: resp.xRate
-                    });
+      // optimistic field updates
+      this.setState({ originAmount: newAmount });
 
-                    // get the new fee & total amount
-                    _this3.makeFeeAjaxCall({
-                        originAmount: resp.originAmount,
-                        originCurrency: _this3.state.originCurrency,
-                        destCurrency: _this3.state.destinationCurrency
+      // get the new dest amount
+      this.makeConversionAjaxCall({
+        currentlyEditing: "origin",
+        newValue: newAmount
+      }, function (resp) {
+        _this4.clearErrorMessage();
 
-                    }, function (response) {
-                        _this3.setState({
-                            feeAmount: response.feeAmount
-                        });
+        _this4.setState({
+          conversionRate: resp.xRate,
+          destinationAmount: resp.destAmount
+        });
+      }, this.handleAjaxFailure);
 
-                        _this3.calcNewTotal();
-                    }, _this3.handleAjaxFailure);
-                });
-            });
-        }
-    }, {
-        key: 'handleOriginAmountChange',
-        value: function handleOriginAmountChange(event) {
-            var _this4 = this;
+      // get the new fee & total amount
+      this.makeFeeAjaxCall({
+        originAmount: newAmount,
+        originCurrency: this.state.originCurrency,
+        destCurrency: this.state.destinationCurrency
+      }, function (resp) {
+        _this4.setState({
+          feeAmount: resp.feeAmount
+        });
 
-            var newAmount = event.target.value;
+        _this4.calcNewTotal();
+      });
+    }
+  }, {
+    key: "handleDestAmountChange",
+    value: function handleDestAmountChange(event) {
+      var _this5 = this;
 
-            // remove unallowed chars
-            newAmount = newAmount.replace(',', '');
+      var newAmount = event.target.value;
 
-            // optimistic field updates
-            this.setState({ originAmount: newAmount });
+      // remove unallowed chars
+      newAmount = newAmount.replace(",", "");
+      // optimistic update
+      this.setState({ destinationAmount: newAmount });
 
-            // get the new dest amount
-            this.makeConversionAjaxCall({
-                currentlyEditing: 'origin',
-                newValue: newAmount
+      this.makeConversionAjaxCall({
+        currentlyEditing: "dest",
+        newValue: newAmount
+      }, function (resp) {
+        // make ajax call to get the fee amount..
+        var newState = {
+          conversionRate: resp.xRate,
+          originAmount: resp.originAmount
+        };
 
-            }, function (resp) {
-                _this4.clearErrorMessage();
+        _this5.setState(newState);
 
-                _this4.setState({
-                    conversionRate: resp.xRate,
-                    destinationAmount: resp.destAmount
-                });
-            }, this.handleAjaxFailure);
+        // get the new fee & total amount
+        _this5.makeFeeAjaxCall({
+          originAmount: resp.originAmount,
+          originCurrency: _this5.state.originCurrency,
+          destCurrency: _this5.state.destinationCurrency
+        }, function (resp) {
+          _this5.setState({
+            feeAmount: resp.feeAmount
+          });
 
-            // get the new fee & total amount
-            this.makeFeeAjaxCall({
-                originAmount: newAmount,
-                originCurrency: this.state.originCurrency,
-                destCurrency: this.state.destinationCurrency
+          _this5.calcNewTotal();
+        }, _this5.handleAjaxFailure);
+      });
+    }
+    // this is debounced in `componentDidMount()` as this.makeConversionAjaxCall()
 
-            }, function (resp) {
-                _this4.setState({
-                    feeAmount: resp.feeAmount
-                });
+  }, {
+    key: "_makeConversionAjaxCall",
+    value: function _makeConversionAjaxCall(data, successCallback, failureCallback) {
+      var originCurrency = this.state.originCurrency;
+      var destCurrency = this.state.destinationCurrency;
 
-                _this4.calcNewTotal();
-            });
-        }
-    }, {
-        key: 'handleDestAmountChange',
-        value: function handleDestAmountChange(event) {
-            var _this5 = this;
+      var payload = {
+        originAmount: data.newValue || this.state.originAmount,
+        destAmount: data.newValue || this.state.destAmount,
+        originCurrency: originCurrency,
+        destCurrency: destCurrency,
+        calcOriginAmount: false
+      };
 
-            var newAmount = event.target.value;
+      // determine whether we need to calc origin or dest amount
+      if (data.currentlyEditing === "dest") {
+        payload.calcOriginAmount = true;
+      }
 
-            // remove unallowed chars
-            newAmount = newAmount.replace(',', '');
-            // optimistic update
-            this.setState({ destinationAmount: newAmount });
+      // ajax call for destination amount
+      // originCurrency, destCurrency, originAmount
+      _axios2.default.get("/api/conversion", {
+        params: payload
+      }).then(function (resp) {
+        successCallback(resp.data);
+      }).catch(failureCallback);
+    }
+    // this is debounced in `componentDidMount()`
 
-            this.makeConversionAjaxCall({
-                currentlyEditing: 'dest',
-                newValue: newAmount
+  }, {
+    key: "_makeFeeAjaxCall",
+    value: function _makeFeeAjaxCall(payload, successCallback, failureCallback) {
+      _axios2.default.get("/api/fees", {
+        params: payload
+      }).then(function (resp) {
+        successCallback(resp.data);
+      }).catch(failureCallback);
+    }
+  }, {
+    key: "calcNewTotal",
+    value: function calcNewTotal() {
+      var newTotal = parseFloat(this.state.originAmount, 10) + parseFloat(this.state.feeAmount, 10);
+      this.setState({ totalCost: parseFloat(newTotal) });
+    }
+  }, {
+    key: "render",
+    value: function render() {
+      var _this6 = this;
 
-            }, function (resp) {
-                // make ajax call to get the fee amount..
-                var newState = {
-                    conversionRate: resp.xRate,
-                    originAmount: resp.originAmount
-                };
+      if (this.state.errorMsg) {
+        var errorMsg = _react2.default.createElement(
+          "div",
+          { className: "errorMsg" },
+          this.state.errorMsg
+        );
+      }
 
-                _this5.setState(newState);
+      return _react2.default.createElement(
+        "div",
+        null,
+        errorMsg,
+        _react2.default.createElement(
+          "label",
+          null,
+          "Convert"
+        ),
+        "\xA0",
+        _react2.default.createElement("input", {
+          className: "amount-field",
+          ref: function ref(input) {
+            return _this6.originAmountInput = input;
+          },
+          onChange: this.handleOriginAmountChange,
+          value: this.state.originAmount
+        }),
+        _react2.default.createElement(
+          "select",
+          {
+            value: this.state.originCurrency,
+            onChange: this.handleOriginCurrencyChange
+          },
+          _react2.default.createElement(
+            "option",
+            { value: "USD" },
+            "USD"
+          ),
+          _react2.default.createElement(
+            "option",
+            { value: "EUR" },
+            "EUR"
+          ),
+          _react2.default.createElement(
+            "option",
+            { value: "JPY" },
+            "JPY"
+          )
+        ),
+        "to",
+        " ",
+        _react2.default.createElement("input", {
+          className: "amount-field",
+          onChange: this.handleDestAmountChange,
+          value: this.state.destinationAmount
+        }),
+        "\xA0",
+        _react2.default.createElement(
+          "select",
+          {
+            value: this.state.destinationCurrency,
+            onChange: this.handleDestCurrencyChange
+          },
+          _react2.default.createElement(
+            "option",
+            { value: "USD" },
+            "USD"
+          ),
+          _react2.default.createElement(
+            "option",
+            { value: "EUR" },
+            "EUR"
+          ),
+          _react2.default.createElement(
+            "option",
+            { value: "JPY" },
+            "JPY"
+          )
+        ),
+        _react2.default.createElement("br", null),
+        _react2.default.createElement("br", null),
+        _react2.default.createElement("br", null),
+        _react2.default.createElement(FeesTable, {
+          originCurrency: this.state.originCurrency,
+          destinationCurrency: this.state.destinationCurrency,
+          conversionRate: this.state.conversionRate,
+          fee: this.state.feeAmount,
+          total: this.state.totalCost
+        })
+      );
+    }
+  }]);
 
-                // get the new fee & total amount
-                _this5.makeFeeAjaxCall({
-                    originAmount: resp.originAmount,
-                    originCurrency: _this5.state.originCurrency,
-                    destCurrency: _this5.state.destinationCurrency
-
-                }, function (resp) {
-                    _this5.setState({
-                        feeAmount: resp.feeAmount
-                    });
-
-                    _this5.calcNewTotal();
-                }, _this5.handleAjaxFailure);
-            });
-        }
-        // this is debounced in `componentDidMount()` as this.makeConversionAjaxCall()
-
-    }, {
-        key: '_makeConversionAjaxCall',
-        value: function _makeConversionAjaxCall(data, successCallback, failureCallback) {
-            var originCurrency = this.state.originCurrency;
-            var destCurrency = this.state.destinationCurrency;
-
-            var payload = {
-                originAmount: data.newValue || this.state.originAmount,
-                destAmount: data.newValue || this.state.destAmount,
-                originCurrency: originCurrency,
-                destCurrency: destCurrency,
-                calcOriginAmount: false
-
-                // determine whether we need to calc origin or dest amount
-            };if (data.currentlyEditing === 'dest') {
-                payload.calcOriginAmount = true;
-            }
-
-            // ajax call for destination amount
-            // originCurrency, destCurrency, originAmount
-            _axios2.default.get('/api/conversion', {
-                params: payload
-            }).then(function (resp) {
-                successCallback(resp.data);
-            }).catch(failureCallback);
-        }
-        // this is debounced in `componentDidMount()`
-
-    }, {
-        key: '_makeFeeAjaxCall',
-        value: function _makeFeeAjaxCall(payload, successCallback, failureCallback) {
-            _axios2.default.get('/api/fees', {
-                params: payload
-            }).then(function (resp) {
-                successCallback(resp.data);
-            }).catch(failureCallback);
-        }
-    }, {
-        key: 'calcNewTotal',
-        value: function calcNewTotal() {
-            var newTotal = parseFloat(this.state.originAmount, 10) + parseFloat(this.state.feeAmount, 10);
-            this.setState({ totalCost: parseFloat(newTotal) });
-        }
-    }, {
-        key: 'render',
-        value: function render() {
-            var _this6 = this;
-
-            if (this.state.errorMsg) {
-                var errorMsg = _react2.default.createElement(
-                    'div',
-                    { className: 'errorMsg' },
-                    this.state.errorMsg
-                );
-            }
-
-            return _react2.default.createElement(
-                'div',
-                null,
-                errorMsg,
-                _react2.default.createElement(
-                    'label',
-                    null,
-                    'Convert'
-                ),
-                '\xA0',
-                _react2.default.createElement('input', { className: 'amount-field', ref: function ref(input) {
-                        return _this6.originAmountInput = input;
-                    }, onChange: this.handleOriginAmountChange, value: this.state.originAmount }),
-                _react2.default.createElement(
-                    'select',
-                    { value: this.state.originCurrency, onChange: this.handleOriginCurrencyChange },
-                    _react2.default.createElement(
-                        'option',
-                        { value: 'USD' },
-                        'USD'
-                    ),
-                    _react2.default.createElement(
-                        'option',
-                        { value: 'EUR' },
-                        'EUR'
-                    ),
-                    _react2.default.createElement(
-                        'option',
-                        { value: 'JPY' },
-                        'JPY'
-                    )
-                ),
-                'to ',
-                _react2.default.createElement('input', { className: 'amount-field', onChange: this.handleDestAmountChange, value: this.state.destinationAmount }),
-                '\xA0',
-                _react2.default.createElement(
-                    'select',
-                    { value: this.state.destinationCurrency, onChange: this.handleDestCurrencyChange },
-                    _react2.default.createElement(
-                        'option',
-                        { value: 'USD' },
-                        'USD'
-                    ),
-                    _react2.default.createElement(
-                        'option',
-                        { value: 'EUR' },
-                        'EUR'
-                    ),
-                    _react2.default.createElement(
-                        'option',
-                        { value: 'JPY' },
-                        'JPY'
-                    )
-                ),
-                _react2.default.createElement('br', null),
-                _react2.default.createElement('br', null),
-                _react2.default.createElement('br', null),
-                _react2.default.createElement(FeesTable, {
-                    originCurrency: this.state.originCurrency,
-                    destinationCurrency: this.state.destinationCurrency,
-                    conversionRate: this.state.conversionRate,
-                    fee: this.state.feeAmount,
-                    total: this.state.totalCost
-                })
-            );
-        }
-    }]);
-
-    return Conversion;
+  return Conversion;
 }(_react2.default.Component);
 
 exports.default = Conversion;
 
 /***/ }),
-/* 37 */
+/* 38 */
 /***/ (function(module, exports, __webpack_require__) {
 
 /* WEBPACK VAR INJECTION */(function(global) {/**
@@ -3196,10 +3264,10 @@ function toNumber(value) {
 
 module.exports = debounce;
 
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(56)))
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(18)))
 
 /***/ }),
-/* 38 */
+/* 39 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -3268,7 +3336,7 @@ module.exports = checkPropTypes;
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(0)))
 
 /***/ }),
-/* 39 */
+/* 40 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -3329,7 +3397,7 @@ module.exports = function() {
 
 
 /***/ }),
-/* 40 */
+/* 41 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -3349,7 +3417,7 @@ var invariant = __webpack_require__(3);
 var warning = __webpack_require__(6);
 
 var ReactPropTypesSecret = __webpack_require__(16);
-var checkPropTypes = __webpack_require__(38);
+var checkPropTypes = __webpack_require__(39);
 
 module.exports = function(isValidElement, throwOnDirectAccess) {
   /* global Symbol */
@@ -3815,7 +3883,7 @@ module.exports = function(isValidElement, throwOnDirectAccess) {
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(0)))
 
 /***/ }),
-/* 41 */
+/* 42 */
 /***/ (function(module, exports, __webpack_require__) {
 
 /* WEBPACK VAR INJECTION */(function(process) {/**
@@ -3842,17 +3910,17 @@ if (process.env.NODE_ENV !== 'production') {
   // By explicitly using `prop-types` you are opting into new development behavior.
   // http://fb.me/prop-types-in-prod
   var throwOnDirectAccess = true;
-  module.exports = __webpack_require__(40)(isValidElement, throwOnDirectAccess);
+  module.exports = __webpack_require__(41)(isValidElement, throwOnDirectAccess);
 } else {
   // By explicitly using `prop-types` you are opting into new production behavior.
   // http://fb.me/prop-types-in-prod
-  module.exports = __webpack_require__(39)();
+  module.exports = __webpack_require__(40)();
 }
 
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(0)))
 
 /***/ }),
-/* 42 */
+/* 43 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -3876,8 +3944,8 @@ if (process.env.NODE_ENV !== "production") {
 var React = __webpack_require__(5);
 var _assign = __webpack_require__(4);
 var Scheduler = __webpack_require__(17);
-var checkPropTypes = __webpack_require__(45);
-var tracing = __webpack_require__(55);
+var checkPropTypes = __webpack_require__(46);
+var tracing = __webpack_require__(57);
 
 var ReactSharedInternals = React.__SECRET_INTERNALS_DO_NOT_USE_OR_YOU_WILL_BE_FIRED; // Prevent newer renderers from RTE when used with older react package versions.
 // Current owner and dispatcher used to share the same ref,
@@ -28872,7 +28940,7 @@ exports.version = ReactVersion;
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(0)))
 
 /***/ }),
-/* 43 */
+/* 44 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -29171,7 +29239,7 @@ exports.unstable_renderSubtreeIntoContainer=function(a,b,c,d){if(!gk(c))throw Er
 
 
 /***/ }),
-/* 44 */
+/* 45 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -29209,15 +29277,15 @@ if (process.env.NODE_ENV === 'production') {
   // DCE check should happen before ReactDOM bundle executes so that
   // DevTools can report bad minification during injection.
   checkDCE();
-  module.exports = __webpack_require__(43);
+  module.exports = __webpack_require__(44);
 } else {
-  module.exports = __webpack_require__(42);
+  module.exports = __webpack_require__(43);
 }
 
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(0)))
 
 /***/ }),
-/* 45 */
+/* 46 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -29233,7 +29301,7 @@ if (process.env.NODE_ENV === 'production') {
 var printWarning = function() {};
 
 if (process.env.NODE_ENV !== 'production') {
-  var ReactPropTypesSecret = __webpack_require__(46);
+  var ReactPropTypesSecret = __webpack_require__(47);
   var loggedTypeFailures = {};
   var has = Function.call.bind(Object.prototype.hasOwnProperty);
 
@@ -29327,7 +29395,7 @@ module.exports = checkPropTypes;
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(0)))
 
 /***/ }),
-/* 46 */
+/* 47 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -29346,7 +29414,7 @@ module.exports = ReactPropTypesSecret;
 
 
 /***/ }),
-/* 47 */
+/* 48 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -29371,7 +29439,7 @@ var require$$0 = __webpack_require__(6);
 var emptyObject = __webpack_require__(15);
 var invariant = __webpack_require__(3);
 var emptyFunction = __webpack_require__(2);
-var checkPropTypes = __webpack_require__(49);
+var checkPropTypes = __webpack_require__(50);
 
 /**
  * Copyright (c) 2013-present, Facebook, Inc.
@@ -31052,7 +31120,7 @@ module.exports = ReactEntry;
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(0)))
 
 /***/ }),
-/* 48 */
+/* 49 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -31082,7 +31150,7 @@ module.exports={Children:{map:S.map,forEach:S.forEach,count:S.count,toArray:S.to
 
 
 /***/ }),
-/* 49 */
+/* 50 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -31098,7 +31166,7 @@ module.exports={Children:{map:S.map,forEach:S.forEach,count:S.count,toArray:S.to
 var printWarning = function() {};
 
 if (process.env.NODE_ENV !== 'production') {
-  var ReactPropTypesSecret = __webpack_require__(50);
+  var ReactPropTypesSecret = __webpack_require__(51);
   var loggedTypeFailures = {};
   var has = Function.call.bind(Object.prototype.hasOwnProperty);
 
@@ -31192,7 +31260,7 @@ module.exports = checkPropTypes;
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(0)))
 
 /***/ }),
-/* 50 */
+/* 51 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -31211,7 +31279,686 @@ module.exports = ReactPropTypesSecret;
 
 
 /***/ }),
-/* 51 */
+/* 52 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* WEBPACK VAR INJECTION */(function(process) {Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_symbol_observable__ = __webpack_require__(58);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "__DO_NOT_USE__ActionTypes", function() { return ActionTypes; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "applyMiddleware", function() { return applyMiddleware; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "bindActionCreators", function() { return bindActionCreators; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "combineReducers", function() { return combineReducers; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "compose", function() { return compose; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "createStore", function() { return createStore; });
+
+
+/**
+ * These are private action types reserved by Redux.
+ * For any unknown actions, you must return the current state.
+ * If the current state is undefined, you must return the initial state.
+ * Do not reference these action types directly in your code.
+ */
+var randomString = function randomString() {
+  return Math.random().toString(36).substring(7).split('').join('.');
+};
+
+var ActionTypes = {
+  INIT: "@@redux/INIT" + randomString(),
+  REPLACE: "@@redux/REPLACE" + randomString(),
+  PROBE_UNKNOWN_ACTION: function PROBE_UNKNOWN_ACTION() {
+    return "@@redux/PROBE_UNKNOWN_ACTION" + randomString();
+  }
+};
+
+/**
+ * @param {any} obj The object to inspect.
+ * @returns {boolean} True if the argument appears to be a plain object.
+ */
+function isPlainObject(obj) {
+  if (typeof obj !== 'object' || obj === null) return false;
+  var proto = obj;
+
+  while (Object.getPrototypeOf(proto) !== null) {
+    proto = Object.getPrototypeOf(proto);
+  }
+
+  return Object.getPrototypeOf(obj) === proto;
+}
+
+/**
+ * Creates a Redux store that holds the state tree.
+ * The only way to change the data in the store is to call `dispatch()` on it.
+ *
+ * There should only be a single store in your app. To specify how different
+ * parts of the state tree respond to actions, you may combine several reducers
+ * into a single reducer function by using `combineReducers`.
+ *
+ * @param {Function} reducer A function that returns the next state tree, given
+ * the current state tree and the action to handle.
+ *
+ * @param {any} [preloadedState] The initial state. You may optionally specify it
+ * to hydrate the state from the server in universal apps, or to restore a
+ * previously serialized user session.
+ * If you use `combineReducers` to produce the root reducer function, this must be
+ * an object with the same shape as `combineReducers` keys.
+ *
+ * @param {Function} [enhancer] The store enhancer. You may optionally specify it
+ * to enhance the store with third-party capabilities such as middleware,
+ * time travel, persistence, etc. The only store enhancer that ships with Redux
+ * is `applyMiddleware()`.
+ *
+ * @returns {Store} A Redux store that lets you read the state, dispatch actions
+ * and subscribe to changes.
+ */
+
+function createStore(reducer, preloadedState, enhancer) {
+  var _ref2;
+
+  if (typeof preloadedState === 'function' && typeof enhancer === 'function' || typeof enhancer === 'function' && typeof arguments[3] === 'function') {
+    throw new Error('It looks like you are passing several store enhancers to ' + 'createStore(). This is not supported. Instead, compose them ' + 'together to a single function.');
+  }
+
+  if (typeof preloadedState === 'function' && typeof enhancer === 'undefined') {
+    enhancer = preloadedState;
+    preloadedState = undefined;
+  }
+
+  if (typeof enhancer !== 'undefined') {
+    if (typeof enhancer !== 'function') {
+      throw new Error('Expected the enhancer to be a function.');
+    }
+
+    return enhancer(createStore)(reducer, preloadedState);
+  }
+
+  if (typeof reducer !== 'function') {
+    throw new Error('Expected the reducer to be a function.');
+  }
+
+  var currentReducer = reducer;
+  var currentState = preloadedState;
+  var currentListeners = [];
+  var nextListeners = currentListeners;
+  var isDispatching = false;
+  /**
+   * This makes a shallow copy of currentListeners so we can use
+   * nextListeners as a temporary list while dispatching.
+   *
+   * This prevents any bugs around consumers calling
+   * subscribe/unsubscribe in the middle of a dispatch.
+   */
+
+  function ensureCanMutateNextListeners() {
+    if (nextListeners === currentListeners) {
+      nextListeners = currentListeners.slice();
+    }
+  }
+  /**
+   * Reads the state tree managed by the store.
+   *
+   * @returns {any} The current state tree of your application.
+   */
+
+
+  function getState() {
+    if (isDispatching) {
+      throw new Error('You may not call store.getState() while the reducer is executing. ' + 'The reducer has already received the state as an argument. ' + 'Pass it down from the top reducer instead of reading it from the store.');
+    }
+
+    return currentState;
+  }
+  /**
+   * Adds a change listener. It will be called any time an action is dispatched,
+   * and some part of the state tree may potentially have changed. You may then
+   * call `getState()` to read the current state tree inside the callback.
+   *
+   * You may call `dispatch()` from a change listener, with the following
+   * caveats:
+   *
+   * 1. The subscriptions are snapshotted just before every `dispatch()` call.
+   * If you subscribe or unsubscribe while the listeners are being invoked, this
+   * will not have any effect on the `dispatch()` that is currently in progress.
+   * However, the next `dispatch()` call, whether nested or not, will use a more
+   * recent snapshot of the subscription list.
+   *
+   * 2. The listener should not expect to see all state changes, as the state
+   * might have been updated multiple times during a nested `dispatch()` before
+   * the listener is called. It is, however, guaranteed that all subscribers
+   * registered before the `dispatch()` started will be called with the latest
+   * state by the time it exits.
+   *
+   * @param {Function} listener A callback to be invoked on every dispatch.
+   * @returns {Function} A function to remove this change listener.
+   */
+
+
+  function subscribe(listener) {
+    if (typeof listener !== 'function') {
+      throw new Error('Expected the listener to be a function.');
+    }
+
+    if (isDispatching) {
+      throw new Error('You may not call store.subscribe() while the reducer is executing. ' + 'If you would like to be notified after the store has been updated, subscribe from a ' + 'component and invoke store.getState() in the callback to access the latest state. ' + 'See https://redux.js.org/api-reference/store#subscribelistener for more details.');
+    }
+
+    var isSubscribed = true;
+    ensureCanMutateNextListeners();
+    nextListeners.push(listener);
+    return function unsubscribe() {
+      if (!isSubscribed) {
+        return;
+      }
+
+      if (isDispatching) {
+        throw new Error('You may not unsubscribe from a store listener while the reducer is executing. ' + 'See https://redux.js.org/api-reference/store#subscribelistener for more details.');
+      }
+
+      isSubscribed = false;
+      ensureCanMutateNextListeners();
+      var index = nextListeners.indexOf(listener);
+      nextListeners.splice(index, 1);
+      currentListeners = null;
+    };
+  }
+  /**
+   * Dispatches an action. It is the only way to trigger a state change.
+   *
+   * The `reducer` function, used to create the store, will be called with the
+   * current state tree and the given `action`. Its return value will
+   * be considered the **next** state of the tree, and the change listeners
+   * will be notified.
+   *
+   * The base implementation only supports plain object actions. If you want to
+   * dispatch a Promise, an Observable, a thunk, or something else, you need to
+   * wrap your store creating function into the corresponding middleware. For
+   * example, see the documentation for the `redux-thunk` package. Even the
+   * middleware will eventually dispatch plain object actions using this method.
+   *
+   * @param {Object} action A plain object representing “what changed”. It is
+   * a good idea to keep actions serializable so you can record and replay user
+   * sessions, or use the time travelling `redux-devtools`. An action must have
+   * a `type` property which may not be `undefined`. It is a good idea to use
+   * string constants for action types.
+   *
+   * @returns {Object} For convenience, the same action object you dispatched.
+   *
+   * Note that, if you use a custom middleware, it may wrap `dispatch()` to
+   * return something else (for example, a Promise you can await).
+   */
+
+
+  function dispatch(action) {
+    if (!isPlainObject(action)) {
+      throw new Error('Actions must be plain objects. ' + 'Use custom middleware for async actions.');
+    }
+
+    if (typeof action.type === 'undefined') {
+      throw new Error('Actions may not have an undefined "type" property. ' + 'Have you misspelled a constant?');
+    }
+
+    if (isDispatching) {
+      throw new Error('Reducers may not dispatch actions.');
+    }
+
+    try {
+      isDispatching = true;
+      currentState = currentReducer(currentState, action);
+    } finally {
+      isDispatching = false;
+    }
+
+    var listeners = currentListeners = nextListeners;
+
+    for (var i = 0; i < listeners.length; i++) {
+      var listener = listeners[i];
+      listener();
+    }
+
+    return action;
+  }
+  /**
+   * Replaces the reducer currently used by the store to calculate the state.
+   *
+   * You might need this if your app implements code splitting and you want to
+   * load some of the reducers dynamically. You might also need this if you
+   * implement a hot reloading mechanism for Redux.
+   *
+   * @param {Function} nextReducer The reducer for the store to use instead.
+   * @returns {void}
+   */
+
+
+  function replaceReducer(nextReducer) {
+    if (typeof nextReducer !== 'function') {
+      throw new Error('Expected the nextReducer to be a function.');
+    }
+
+    currentReducer = nextReducer; // This action has a similiar effect to ActionTypes.INIT.
+    // Any reducers that existed in both the new and old rootReducer
+    // will receive the previous state. This effectively populates
+    // the new state tree with any relevant data from the old one.
+
+    dispatch({
+      type: ActionTypes.REPLACE
+    });
+  }
+  /**
+   * Interoperability point for observable/reactive libraries.
+   * @returns {observable} A minimal observable of state changes.
+   * For more information, see the observable proposal:
+   * https://github.com/tc39/proposal-observable
+   */
+
+
+  function observable() {
+    var _ref;
+
+    var outerSubscribe = subscribe;
+    return _ref = {
+      /**
+       * The minimal observable subscription method.
+       * @param {Object} observer Any object that can be used as an observer.
+       * The observer object should have a `next` method.
+       * @returns {subscription} An object with an `unsubscribe` method that can
+       * be used to unsubscribe the observable from the store, and prevent further
+       * emission of values from the observable.
+       */
+      subscribe: function subscribe(observer) {
+        if (typeof observer !== 'object' || observer === null) {
+          throw new TypeError('Expected the observer to be an object.');
+        }
+
+        function observeState() {
+          if (observer.next) {
+            observer.next(getState());
+          }
+        }
+
+        observeState();
+        var unsubscribe = outerSubscribe(observeState);
+        return {
+          unsubscribe: unsubscribe
+        };
+      }
+    }, _ref[__WEBPACK_IMPORTED_MODULE_0_symbol_observable__["a" /* default */]] = function () {
+      return this;
+    }, _ref;
+  } // When a store is created, an "INIT" action is dispatched so that every
+  // reducer returns their initial state. This effectively populates
+  // the initial state tree.
+
+
+  dispatch({
+    type: ActionTypes.INIT
+  });
+  return _ref2 = {
+    dispatch: dispatch,
+    subscribe: subscribe,
+    getState: getState,
+    replaceReducer: replaceReducer
+  }, _ref2[__WEBPACK_IMPORTED_MODULE_0_symbol_observable__["a" /* default */]] = observable, _ref2;
+}
+
+/**
+ * Prints a warning in the console if it exists.
+ *
+ * @param {String} message The warning message.
+ * @returns {void}
+ */
+function warning(message) {
+  /* eslint-disable no-console */
+  if (typeof console !== 'undefined' && typeof console.error === 'function') {
+    console.error(message);
+  }
+  /* eslint-enable no-console */
+
+
+  try {
+    // This error was thrown as a convenience so that if you enable
+    // "break on all exceptions" in your console,
+    // it would pause the execution at this line.
+    throw new Error(message);
+  } catch (e) {} // eslint-disable-line no-empty
+
+}
+
+function getUndefinedStateErrorMessage(key, action) {
+  var actionType = action && action.type;
+  var actionDescription = actionType && "action \"" + String(actionType) + "\"" || 'an action';
+  return "Given " + actionDescription + ", reducer \"" + key + "\" returned undefined. " + "To ignore an action, you must explicitly return the previous state. " + "If you want this reducer to hold no value, you can return null instead of undefined.";
+}
+
+function getUnexpectedStateShapeWarningMessage(inputState, reducers, action, unexpectedKeyCache) {
+  var reducerKeys = Object.keys(reducers);
+  var argumentName = action && action.type === ActionTypes.INIT ? 'preloadedState argument passed to createStore' : 'previous state received by the reducer';
+
+  if (reducerKeys.length === 0) {
+    return 'Store does not have a valid reducer. Make sure the argument passed ' + 'to combineReducers is an object whose values are reducers.';
+  }
+
+  if (!isPlainObject(inputState)) {
+    return "The " + argumentName + " has unexpected type of \"" + {}.toString.call(inputState).match(/\s([a-z|A-Z]+)/)[1] + "\". Expected argument to be an object with the following " + ("keys: \"" + reducerKeys.join('", "') + "\"");
+  }
+
+  var unexpectedKeys = Object.keys(inputState).filter(function (key) {
+    return !reducers.hasOwnProperty(key) && !unexpectedKeyCache[key];
+  });
+  unexpectedKeys.forEach(function (key) {
+    unexpectedKeyCache[key] = true;
+  });
+  if (action && action.type === ActionTypes.REPLACE) return;
+
+  if (unexpectedKeys.length > 0) {
+    return "Unexpected " + (unexpectedKeys.length > 1 ? 'keys' : 'key') + " " + ("\"" + unexpectedKeys.join('", "') + "\" found in " + argumentName + ". ") + "Expected to find one of the known reducer keys instead: " + ("\"" + reducerKeys.join('", "') + "\". Unexpected keys will be ignored.");
+  }
+}
+
+function assertReducerShape(reducers) {
+  Object.keys(reducers).forEach(function (key) {
+    var reducer = reducers[key];
+    var initialState = reducer(undefined, {
+      type: ActionTypes.INIT
+    });
+
+    if (typeof initialState === 'undefined') {
+      throw new Error("Reducer \"" + key + "\" returned undefined during initialization. " + "If the state passed to the reducer is undefined, you must " + "explicitly return the initial state. The initial state may " + "not be undefined. If you don't want to set a value for this reducer, " + "you can use null instead of undefined.");
+    }
+
+    if (typeof reducer(undefined, {
+      type: ActionTypes.PROBE_UNKNOWN_ACTION()
+    }) === 'undefined') {
+      throw new Error("Reducer \"" + key + "\" returned undefined when probed with a random type. " + ("Don't try to handle " + ActionTypes.INIT + " or other actions in \"redux/*\" ") + "namespace. They are considered private. Instead, you must return the " + "current state for any unknown actions, unless it is undefined, " + "in which case you must return the initial state, regardless of the " + "action type. The initial state may not be undefined, but can be null.");
+    }
+  });
+}
+/**
+ * Turns an object whose values are different reducer functions, into a single
+ * reducer function. It will call every child reducer, and gather their results
+ * into a single state object, whose keys correspond to the keys of the passed
+ * reducer functions.
+ *
+ * @param {Object} reducers An object whose values correspond to different
+ * reducer functions that need to be combined into one. One handy way to obtain
+ * it is to use ES6 `import * as reducers` syntax. The reducers may never return
+ * undefined for any action. Instead, they should return their initial state
+ * if the state passed to them was undefined, and the current state for any
+ * unrecognized action.
+ *
+ * @returns {Function} A reducer function that invokes every reducer inside the
+ * passed object, and builds a state object with the same shape.
+ */
+
+
+function combineReducers(reducers) {
+  var reducerKeys = Object.keys(reducers);
+  var finalReducers = {};
+
+  for (var i = 0; i < reducerKeys.length; i++) {
+    var key = reducerKeys[i];
+
+    if (process.env.NODE_ENV !== 'production') {
+      if (typeof reducers[key] === 'undefined') {
+        warning("No reducer provided for key \"" + key + "\"");
+      }
+    }
+
+    if (typeof reducers[key] === 'function') {
+      finalReducers[key] = reducers[key];
+    }
+  }
+
+  var finalReducerKeys = Object.keys(finalReducers); // This is used to make sure we don't warn about the same
+  // keys multiple times.
+
+  var unexpectedKeyCache;
+
+  if (process.env.NODE_ENV !== 'production') {
+    unexpectedKeyCache = {};
+  }
+
+  var shapeAssertionError;
+
+  try {
+    assertReducerShape(finalReducers);
+  } catch (e) {
+    shapeAssertionError = e;
+  }
+
+  return function combination(state, action) {
+    if (state === void 0) {
+      state = {};
+    }
+
+    if (shapeAssertionError) {
+      throw shapeAssertionError;
+    }
+
+    if (process.env.NODE_ENV !== 'production') {
+      var warningMessage = getUnexpectedStateShapeWarningMessage(state, finalReducers, action, unexpectedKeyCache);
+
+      if (warningMessage) {
+        warning(warningMessage);
+      }
+    }
+
+    var hasChanged = false;
+    var nextState = {};
+
+    for (var _i = 0; _i < finalReducerKeys.length; _i++) {
+      var _key = finalReducerKeys[_i];
+      var reducer = finalReducers[_key];
+      var previousStateForKey = state[_key];
+      var nextStateForKey = reducer(previousStateForKey, action);
+
+      if (typeof nextStateForKey === 'undefined') {
+        var errorMessage = getUndefinedStateErrorMessage(_key, action);
+        throw new Error(errorMessage);
+      }
+
+      nextState[_key] = nextStateForKey;
+      hasChanged = hasChanged || nextStateForKey !== previousStateForKey;
+    }
+
+    hasChanged = hasChanged || finalReducerKeys.length !== Object.keys(state).length;
+    return hasChanged ? nextState : state;
+  };
+}
+
+function bindActionCreator(actionCreator, dispatch) {
+  return function () {
+    return dispatch(actionCreator.apply(this, arguments));
+  };
+}
+/**
+ * Turns an object whose values are action creators, into an object with the
+ * same keys, but with every function wrapped into a `dispatch` call so they
+ * may be invoked directly. This is just a convenience method, as you can call
+ * `store.dispatch(MyActionCreators.doSomething())` yourself just fine.
+ *
+ * For convenience, you can also pass an action creator as the first argument,
+ * and get a dispatch wrapped function in return.
+ *
+ * @param {Function|Object} actionCreators An object whose values are action
+ * creator functions. One handy way to obtain it is to use ES6 `import * as`
+ * syntax. You may also pass a single function.
+ *
+ * @param {Function} dispatch The `dispatch` function available on your Redux
+ * store.
+ *
+ * @returns {Function|Object} The object mimicking the original object, but with
+ * every action creator wrapped into the `dispatch` call. If you passed a
+ * function as `actionCreators`, the return value will also be a single
+ * function.
+ */
+
+
+function bindActionCreators(actionCreators, dispatch) {
+  if (typeof actionCreators === 'function') {
+    return bindActionCreator(actionCreators, dispatch);
+  }
+
+  if (typeof actionCreators !== 'object' || actionCreators === null) {
+    throw new Error("bindActionCreators expected an object or a function, instead received " + (actionCreators === null ? 'null' : typeof actionCreators) + ". " + "Did you write \"import ActionCreators from\" instead of \"import * as ActionCreators from\"?");
+  }
+
+  var boundActionCreators = {};
+
+  for (var key in actionCreators) {
+    var actionCreator = actionCreators[key];
+
+    if (typeof actionCreator === 'function') {
+      boundActionCreators[key] = bindActionCreator(actionCreator, dispatch);
+    }
+  }
+
+  return boundActionCreators;
+}
+
+function _defineProperty(obj, key, value) {
+  if (key in obj) {
+    Object.defineProperty(obj, key, {
+      value: value,
+      enumerable: true,
+      configurable: true,
+      writable: true
+    });
+  } else {
+    obj[key] = value;
+  }
+
+  return obj;
+}
+
+function ownKeys(object, enumerableOnly) {
+  var keys = Object.keys(object);
+
+  if (Object.getOwnPropertySymbols) {
+    keys.push.apply(keys, Object.getOwnPropertySymbols(object));
+  }
+
+  if (enumerableOnly) keys = keys.filter(function (sym) {
+    return Object.getOwnPropertyDescriptor(object, sym).enumerable;
+  });
+  return keys;
+}
+
+function _objectSpread2(target) {
+  for (var i = 1; i < arguments.length; i++) {
+    var source = arguments[i] != null ? arguments[i] : {};
+
+    if (i % 2) {
+      ownKeys(source, true).forEach(function (key) {
+        _defineProperty(target, key, source[key]);
+      });
+    } else if (Object.getOwnPropertyDescriptors) {
+      Object.defineProperties(target, Object.getOwnPropertyDescriptors(source));
+    } else {
+      ownKeys(source).forEach(function (key) {
+        Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key));
+      });
+    }
+  }
+
+  return target;
+}
+
+/**
+ * Composes single-argument functions from right to left. The rightmost
+ * function can take multiple arguments as it provides the signature for
+ * the resulting composite function.
+ *
+ * @param {...Function} funcs The functions to compose.
+ * @returns {Function} A function obtained by composing the argument functions
+ * from right to left. For example, compose(f, g, h) is identical to doing
+ * (...args) => f(g(h(...args))).
+ */
+function compose() {
+  for (var _len = arguments.length, funcs = new Array(_len), _key = 0; _key < _len; _key++) {
+    funcs[_key] = arguments[_key];
+  }
+
+  if (funcs.length === 0) {
+    return function (arg) {
+      return arg;
+    };
+  }
+
+  if (funcs.length === 1) {
+    return funcs[0];
+  }
+
+  return funcs.reduce(function (a, b) {
+    return function () {
+      return a(b.apply(void 0, arguments));
+    };
+  });
+}
+
+/**
+ * Creates a store enhancer that applies middleware to the dispatch method
+ * of the Redux store. This is handy for a variety of tasks, such as expressing
+ * asynchronous actions in a concise manner, or logging every action payload.
+ *
+ * See `redux-thunk` package as an example of the Redux middleware.
+ *
+ * Because middleware is potentially asynchronous, this should be the first
+ * store enhancer in the composition chain.
+ *
+ * Note that each middleware will be given the `dispatch` and `getState` functions
+ * as named arguments.
+ *
+ * @param {...Function} middlewares The middleware chain to be applied.
+ * @returns {Function} A store enhancer applying the middleware.
+ */
+
+function applyMiddleware() {
+  for (var _len = arguments.length, middlewares = new Array(_len), _key = 0; _key < _len; _key++) {
+    middlewares[_key] = arguments[_key];
+  }
+
+  return function (createStore) {
+    return function () {
+      var store = createStore.apply(void 0, arguments);
+
+      var _dispatch = function dispatch() {
+        throw new Error('Dispatching while constructing your middleware is not allowed. ' + 'Other middleware would not be applied to this dispatch.');
+      };
+
+      var middlewareAPI = {
+        getState: store.getState,
+        dispatch: function dispatch() {
+          return _dispatch.apply(void 0, arguments);
+        }
+      };
+      var chain = middlewares.map(function (middleware) {
+        return middleware(middlewareAPI);
+      });
+      _dispatch = compose.apply(void 0, chain)(store.dispatch);
+      return _objectSpread2({}, store, {
+        dispatch: _dispatch
+      });
+    };
+  };
+}
+
+/*
+ * This is a dummy function to check if the function name has been altered by minification.
+ * If the function has been minified and NODE_ENV !== 'production', warn the user.
+ */
+
+function isCrushed() {}
+
+if (process.env.NODE_ENV !== 'production' && typeof isCrushed.name === 'string' && isCrushed.name !== 'isCrushed') {
+  warning('You are currently using minified code outside of NODE_ENV === "production". ' + 'This means that you are running a slower development build of Redux. ' + 'You can use loose-envify (https://github.com/zertosh/loose-envify) for browserify ' + 'or setting mode to production in webpack (https://webpack.js.org/concepts/mode/) ' + 'to ensure you have the correct code for your production build.');
+}
+
+
+
+/* WEBPACK VAR INJECTION */}.call(__webpack_exports__, __webpack_require__(0)))
+
+/***/ }),
+/* 53 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -31568,7 +32315,7 @@ exports.unstable_wrap = unstable_wrap;
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(0)))
 
 /***/ }),
-/* 52 */
+/* 54 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -31585,7 +32332,7 @@ var b=0;exports.__interactionsRef=null;exports.__subscriberRef=null;exports.unst
 
 
 /***/ }),
-/* 53 */
+/* 55 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -32451,7 +33198,7 @@ exports.unstable_wrapCallback = unstable_wrapCallback;
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(0)))
 
 /***/ }),
-/* 54 */
+/* 56 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -32479,52 +33226,108 @@ exports.unstable_shouldYield=function(){var a=exports.unstable_now();V(a);var b=
 
 
 /***/ }),
-/* 55 */
+/* 57 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 /* WEBPACK VAR INJECTION */(function(process) {
 
 if (process.env.NODE_ENV === 'production') {
-  module.exports = __webpack_require__(52);
+  module.exports = __webpack_require__(54);
 } else {
-  module.exports = __webpack_require__(51);
+  module.exports = __webpack_require__(53);
 }
 
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(0)))
 
 /***/ }),
-/* 56 */
-/***/ (function(module, exports) {
+/* 58 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
 
-var g;
+"use strict";
+/* WEBPACK VAR INJECTION */(function(global, module) {/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__ponyfill_js__ = __webpack_require__(59);
+/* global window */
 
-// This works in non-strict mode
-g = (function() {
-	return this;
-})();
 
-try {
-	// This works if eval is allowed (see CSP)
-	g = g || Function("return this")() || (1,eval)("this");
-} catch(e) {
-	// This works if the window reference is available
-	if(typeof window === "object")
-		g = window;
+var root;
+
+if (typeof self !== 'undefined') {
+  root = self;
+} else if (typeof window !== 'undefined') {
+  root = window;
+} else if (typeof global !== 'undefined') {
+  root = global;
+} else if (true) {
+  root = module;
+} else {
+  root = Function('return this')();
 }
 
-// g can still be undefined, but nothing to do about it...
-// We return undefined, instead of nothing here, so it's
-// easier to handle this case. if(!global) { ...}
+var result = __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__ponyfill_js__["a" /* default */])(root);
+/* harmony default export */ __webpack_exports__["a"] = result;
 
-module.exports = g;
+/* WEBPACK VAR INJECTION */}.call(__webpack_exports__, __webpack_require__(18), __webpack_require__(60)(module)))
+
+/***/ }),
+/* 59 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (immutable) */ __webpack_exports__["a"] = symbolObservablePonyfill;
+function symbolObservablePonyfill(root) {
+	var result;
+	var Symbol = root.Symbol;
+
+	if (typeof Symbol === 'function') {
+		if (Symbol.observable) {
+			result = Symbol.observable;
+		} else {
+			result = Symbol('observable');
+			Symbol.observable = result;
+		}
+	} else {
+		result = '@@observable';
+	}
+
+	return result;
+};
 
 
 /***/ }),
-/* 57 */
+/* 60 */
+/***/ (function(module, exports) {
+
+module.exports = function(originalModule) {
+	if(!originalModule.webpackPolyfill) {
+		var module = Object.create(originalModule);
+		// module.parent = undefined by default
+		if(!module.children) module.children = [];
+		Object.defineProperty(module, "loaded", {
+			enumerable: true,
+			get: function() {
+				return module.l;
+			}
+		});
+		Object.defineProperty(module, "id", {
+			enumerable: true,
+			get: function() {
+				return module.i;
+			}
+		});
+		Object.defineProperty(module, "exports", {
+			enumerable: true,
+		});
+		module.webpackPolyfill = 1;
+	}
+	return module;
+};
+
+
+/***/ }),
+/* 61 */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(18);
+module.exports = __webpack_require__(19);
 
 
 /***/ })
