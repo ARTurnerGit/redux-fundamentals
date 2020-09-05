@@ -36239,7 +36239,7 @@ var FeesTable = function (_React$Component) {
                 null,
                 "1 ",
                 originCurrency,
-                " -> ",
+                " : ",
                 conversionRate.toFixed(2),
                 " ",
                 destinationCurrency

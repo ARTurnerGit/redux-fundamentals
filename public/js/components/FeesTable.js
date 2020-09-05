@@ -18,7 +18,7 @@ class FeesTable extends React.Component {
             <tr>
               <td>Conversion Rate</td>
               <td>
-                1 {originCurrency} -> {conversionRate.toFixed(2)}{" "}
+                1 {originCurrency} : {conversionRate.toFixed(2)}{" "}
                 {destinationCurrency}
               </td>
             </tr>
